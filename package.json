@@ -1,14 +1,18 @@
 {
-  "name"         : "node-todo",
+  "name"         : "pongladder",
   "version"      : "0.0.0",
-  "description"  : "Simple todo application.",
+  "description"  : "Ping pong ladder application",
   "main"         : "server.js",
-  "author"       : "Scotch",
+  "author"       : "calingribble",
   "dependencies" : {
     "express"         : "~4.6.1",
     "mongoose"        : "~3.8.13",
     "morgan"          : "~1.1.1",
     "body-parser"     : "~1.4.3",
     "method-override" : "~2.1.1"
+  }
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/calingribble/pongladder.git"
   }
 }

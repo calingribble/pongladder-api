@@ -1,56 +1,56 @@
-var Todo = require('./models/todo');
+var Game = require('./models/game');
 
 module.exports = function(app) {
 
 	// api ---------------------------------------------------------------------
-	// get all todos
-	app.get('/api/todos', function(req, res) {
+	// get all games
+	app.get('/api/games', function(req, res) {
 
-		// use mongoose to get all todos in the database
-		Todo.find(function(err, todos) {
+		// use mongoose to get all games in the database
+		Game.find(function(err, games) {
 
 			// if there is an error retrieving, send the error. nothing after res.send(err) will execute
 			if (err)
 				res.send(err)
 
-			res.json(todos); // return all todos in JSON format
+			res.json(games); // return all games in JSON format
 		});
 	});
 
-	// create todo and send back all todos after creation
-	app.post('/api/todos', function(req, res) {
+	// create game and send back all games after creation
+	app.post('/api/games', function(req, res) {
 
-		// create a todo, information comes from AJAX request from Angular
-		Todo.create({
-			text : req.body.text,
+		// create a game, information comes from AJAX request from Angular
+		Game.create({
+			name : req.body.name,
 			done : false
-		}, function(err, todo) {
+		}, function(err, game) {
 			if (err)
 				res.send(err);
 
-			// get and return all the todos after you create another
-			Todo.find(function(err, todos) {
+			// get and return all the games after you create another
+			Game.find(function(err, games) {
 				if (err)
 					res.send(err)
-				res.json(todos);
+				res.json(games);
 			});
 		});
 
 	});
 
-	// delete a todo
-	app.delete('/api/todos/:todo_id', function(req, res) {
-		Todo.remove({
-			_id : req.params.todo_id
-		}, function(err, todo) {
+	// delete a game
+	app.delete('/api/games/:game_id', function(req, res) {
+		Game.remove({
+			_id : req.params.game_id
+		}, function(err, game) {
 			if (err)
 				res.send(err);
 
-			// get and return all the todos after you create another
-			Todo.find(function(err, todos) {
+			// get and return all the games after you create another
+			Game.find(function(err, games) {
 				if (err)
 					res.send(err)
-				res.json(todos);
+				res.json(games);
 			});
 		});
 	});
