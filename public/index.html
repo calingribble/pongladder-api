@@ -2,94 +2,135 @@
 
 <!-- ASSIGN OUR ANGULAR MODULE -->
 <html ng-app="scotchGame">
-<head>
-	<!-- META -->
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+  <head>
+    <!-- META -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
 
-	<title>Node/Angular Game App</title>
+    <title>Node/Angular Game App</title>
 
-	<!-- SCROLLS -->
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
-	<style>
-		html 					{ overflow-y:scroll; }
-		body 					{ padding-top:50px; }
-		#game-list 				{ margin-bottom:30px; }
-		#game-form 	 			{ margin-bottom:50px; }
-	</style>
+    <!-- SCROLLS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
 
-	<!-- SPELLS -->
-	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script><!-- load angular -->
+    <style>
+      html { overflow-y:scroll; }
+      body { padding-top:50px; }
+      #game-list { margin-bottom:30px; }
+      #game-form { margin-bottom:50px; }
+    </style>
 
-	<script src="js/controllers/main.js"></script> <!-- load up our controller -->
-	<script src="js/services/games.js"></script> <!-- load our game service -->
-	<script src="js/core.js"></script> <!-- load our main application -->
+    <!-- SPELLS -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script><!-- load angular -->
+    <script src="js/controllers/main.js"></script> <!-- load up our controller -->
+    <script src="js/services/games.js"></script> <!-- load our game service -->
+    <script src="js/core.js"></script> <!-- load our main application -->
 
-</head>
-<!-- SET THE CONTROLLER -->
-<body ng-controller="mainController">
-	<div class="container">
+  </head>
+  <!-- SET THE CONTROLLER -->
+  <body ng-controller="mainController">
+    <div class="container">
 
-		<!-- HEADER AND TODO COUNT -->
-		<div class="jumbotron text-center">
-			<h1>Games <span class="label label-info">{{ games.length }}</span></h1>
-		</div>
+      <!-- HEADER AND TODO COUNT -->
+      <div class="jumbotron text-center">
+        <h1>Games <span class="label label-info">{{ games.length }}</span></h1>
+      </div>
 
-		<!-- TODO LIST -->
-		<div id="game-list" class="row">
-			<div class="col-sm-4 col-sm-offset-4">
+      <!-- TODO LIST -->
+      <div id="game-list" class="row">
+        <div class="col-sm-4 col-sm-offset-4">
 
-				
 
-        <!-- LOOP OVER THE TODOS IN $scope.games -->
-        <label>
-          <table class="table">
-            <thead>
-              <tr>
-                <th>Row</th>
-                <th>Name</th>
-                <th>Rating</th>
-                <th>Wins</th>
-                <th>Losses</th>
-                <th>Points</th>
-                <th>PPG</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr ng-repeat="game in games track by $index | orderBy:name">
-                <td>{{ $index+1 }}.</td>
-                <td>{{ game.name }}</td>
-              </tr>
-            </div>
-          </tbody>
-        </table>
+
+          <!-- LOOP OVER THE TODOS IN $scope.games -->
+          <label style="height:400px!important;overflow: scroll; width: 600%; text-align: center;">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th><center>Victor</center></th>
+                  <th><center>Result</center></th>
+                  <th><center>Loser</center></th>
+                  <th><center>Time</center></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="game in games track by $index | orderBy:name">
+                  <td>{{ game.winner }}</td>
+                  <td>{{ game.result }}</td>
+                  <td>{{ game.loser }}</td>
+                  <td>{{ game.time }}</td>
+                </tr>
+              </div>
+            </tbody>
+          </table>
+          <!--<table class="table">-->
+            <!--<thead>-->
+              <!--<tr>-->
+                <!--<th>Row</th>-->
+                <!--<th>Name</th>-->
+                <!--<th>Rating</th>-->
+                <!--<th>Wins</th>-->
+                <!--<th>Losses</th>-->
+                <!--<th>Points</th>-->
+                <!--<th>PPG</th>-->
+                <!--</tr>-->
+              <!--</thead>-->
+            <!--<tbody>-->
+              <!--<tr ng-repeat="game in games track by $index | orderBy:name">-->
+                <!--<td>{{ $index+1 }}.</td>-->
+                <!--<td>{{ game.name }}</td>-->
+                <!--</tr>-->
+              <!--</div>-->
+            <!--</tbody>-->
+          <!--</table>-->
       </label>
 
-				<p class="text-center" ng-show="loading">
-					<span class="fa fa-spinner fa-spin fa-3x"></span>
-				</p>
+      <p class="text-center" ng-show="loading">
+      <span class="fa fa-spinner fa-spin fa-3x"></span>
+      </p>
 
-			</div>
-		</div>
+    </div>
+  </div>
 
-		<!-- FORM TO CREATE TODOS -->
-		<div id="game-form" class="row">
-			<div class="col-sm-8 col-sm-offset-2 text-center">
-				<form>
-					<div class="form-group">
+</div>
+<div class="row text-center">
+  <h3>The Basic Modal</h3>
+  <a class="btn btn-lg btn-success" data-toggle="modal" data-target="#basicModal">Click to open Modal</a>
+</div>
 
-						<!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
-						<input type="text" class="form-control input-lg text-center" placeholder="Insert Name" ng-model="formData.name">
-					</div>
+<div class="modal fade" id="basicModal" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Basic Modal</h4>
+      </div>
+      <div class="modal-body">
+        <h3>Modal Body</h3>
+        <!-- FORM TO CREATE TODOS -->
+        <div id="game-form" class="row">
+          <div class="col-sm-8 col-sm-offset-2 text-center">
+            <form>
+              <div class="form-group">
 
-					<!-- createToDo() WILL CREATE NEW TODOS -->
-					<button type="submit" class="btn btn-primary btn-lg" ng-click="createGame()">Add</button>
-				</form>
-			</div>
-		</div>
+                <!--[> BIND THIS VALUE TO formData.text IN ANGULAR <]-->
+                <input type="text" class="form-control input-lg text-center" placeholder="Insert Name" ng-model="formData.name">
+              </div>
 
-	</div>
-
-</body>
-</html>
+              <!--[> createToDo() WILL CREATE NEW TODOS <]-->
+              <button type="submit" class="btn btn-primary btn-lg" ng-click="createGame()">Add</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+      </body>
+    </html>
