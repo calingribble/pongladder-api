@@ -12,20 +12,28 @@ var nameValidator = [
     validator: 'matches',
     arguments: /^[A-z]+$/,
     passIfEmpty: true,
-    message: 'Name should contain alphabetic characters only'
+    message: 'Name should contain alphabetic players only'
   })
 ];
 
-var characterSchema = new Schema({
+var playerSchema = new Schema({
   name: {
     type: String,
     required: true,
     validate: nameValidator
   },
-  experience: {
+  wins: {
     type: Number,
     default: 0
+  },
+  losses: {
+    type: Number,
+    default: 0
+  },
+  rating: {
+    type: Number,
+    default: 1500
   }
 });
 
-module.exports=mongoose.model('Character', characterSchema);
+module.exports=mongoose.model('Player', playerSchema);

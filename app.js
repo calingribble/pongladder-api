@@ -1,7 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-var accounts = require('./routes/accounts');
-var characters = require('./routes/characters');
+var games = require('./routes/games');
+var players = require('./routes/players');
 var mongoose = require('mongoose');
 var validator = require('mongoose-validator');
 
@@ -15,7 +15,7 @@ var allowCrossDomain = function(req, res, next) {
 
 var app = express();
 
-var dbName='mongodb://admin:admin@kahana.mongohq.com:10074/sarpg-dev-db';
+var dbName='mongodb://admin:admin@kahana.mongohq.com:10073/pong-ladder-db';
 
 var connectionString=dbName;
 
@@ -25,7 +25,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(allowCrossDomain);
 
-app.use('/api', accounts);
-app.use('/api', characters);
+app.use('/api', games);
+app.use('/api', players);
 
 module.exports = app;

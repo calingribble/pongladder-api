@@ -1,64 +1,64 @@
-var Account=require('../models/account');
+var Game=require('../models/game');
 var express=require('express');
 
 var router=express.Router();
 
-router.route('/accounts')
+router.route('/games')
 .get(function(req,res){
-  Account.find(function(err,accounts){
+  Game.find(function(err,games){
     if(err) {
       res.send(err);
     }
-    res.json(accounts);
+    res.json(games);
   });
 })
 
 .post(function(req,res){
-  var account=new Account(req.body);
-  account.save(function(err){
+  var game=new Game(req.body);
+  game.save(function(err){
     if(err) {
       res.send(err);
     }
-    res.send({message:'Account Added'});
+    res.send({message:'Game Added'});
   });
 });
 
-router.route('/accounts/:id')
+router.route('/games/:id')
 .put(function(req,res){
-  Account.findOne({_id:req.params.id},function(err,account){
+  Game.findOne({_id:req.params.id},function(err,game){
     if(err) {
       res.send(err);
     }
 
     for(prop in req.body){
-      account[prop]=req.body[prop];
+      game[prop]=req.body[prop];
     }
 
-    account.save(function(err) {
+    game.save(function(err) {
 
       if(err) {
         res.send(err);
       }
-      res.json({ message: 'Account updated!' });
+      res.json({ message: 'Game updated!' });
     });
 
   });
 })
 
 .get(function(req,res){
-  Account.findOne({_id:req.params.id},function(err, account) {
+  Game.findOne({_id:req.params.id},function(err, game) {
     if(err) {
       res.send(err);
     }
 
-    res.json(account);
+    res.json(game);
   });
 })
 
 .delete(function(req,res){
-  Account.remove({
+  Game.remove({
     _id: req.params.id
-  }, function(err, account) {
+  }, function(err, game) {
     if(err) {
       res.send(err);
     }

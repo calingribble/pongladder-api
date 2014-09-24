@@ -1,64 +1,64 @@
-var Character=require('../models/character');
+var Player=require('../models/player');
 var express=require('express');
 
 var router=express.Router();
 
-router.route('/characters')
+router.route('/players')
 .get(function(req,res){
-  Character.find(function(err,characters){
+  Player.find(function(err,players){
     if(err) {
       res.send(err);
     }
-    res.json(characters);
+    res.json(players);
   });
 })
 
 .post(function(req,res){
-  var character=new Character(req.body);
-  character.save(function(err){
+  var player=new Player(req.body);
+  player.save(function(err){
     if(err) {
       res.send(err);
     }
-    res.send({message:'Character Added'});
+    res.send({message:'Player Added'});
   });
 });
 
-router.route('/characters/:id')
+router.route('/players/:id')
 .put(function(req,res){
-  Character.findOne({_id:req.params.id},function(err,character){
+  Player.findOne({_id:req.params.id},function(err,player){
     if(err) {
       res.send(err);
     }
 
     for(prop in req.body){
-      character[prop]=req.body[prop];
+      player[prop]=req.body[prop];
     }
 
-    character.save(function(err) {
+    player.save(function(err) {
 
       if(err) {
         res.send(err);
       }
-      res.json({ message: 'Character updated!' });
+      res.json({ message: 'Player updated!' });
     });
 
   });
 })
 
 .get(function(req,res){
-  Character.findOne({_id:req.params.id},function(err, character) {
+  Player.findOne({_id:req.params.id},function(err, player) {
     if(err) {
       res.send(err);
     }
 
-    res.json(character);
+    res.json(player);
   });
 })
 
 .delete(function(req,res){
-  Character.remove({
+  Player.remove({
     _id: req.params.id
-  }, function(err, character) {
+  }, function(err, player) {
     if(err) {
       res.send(err);
     }
