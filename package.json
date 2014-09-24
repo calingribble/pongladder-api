@@ -1,19 +1,19 @@
 {
-  "name": "pongladder",
-  "version": "0.0.0",
-  "description": "Ping pong ladder application",
-  "main": "server.js",
-  "author": "calingribble",
-  "dependencies": {
-    "body-parser": "~1.4.3",
-    "express": "~4.6.1",
-    "method-override": "~2.1.1",
-    "moment": "^2.8.1",
-    "mongoose": "~3.8.13",
-    "morgan": "~1.1.1"
+  "name": "sarpg",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
   },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/calingribble/pongladder.git"
+  "main": "./bin/www",
+  "engines": {
+    "node": "0.10.x"
+  },
+  "dependencies": {
+    "body-parser": "~1.0.0",
+    "crypto": "0.0.3",
+    "express": "~4.2.0",
+    "mongoose": "~3.8.11",
+    "mongoose-validator": "^1.0.2"
   }
 }
