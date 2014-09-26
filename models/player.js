@@ -36,4 +36,5 @@ var playerSchema = new Schema({
   }
 });
 
+
 module.exports=mongoose.model('Player', playerSchema);

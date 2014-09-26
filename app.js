@@ -5,6 +5,7 @@ var players = require('./routes/players');
 var mongoose = require('mongoose');
 var validator = require('mongoose-validator');
 
+  //players.findOne({'name':'woowoo'}, function(x){console.log(x)});
 var allowCrossDomain = function(req, res, next) {
   res.header('Access-Control-Allow-Origin', 'http://localhost:9000');
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');

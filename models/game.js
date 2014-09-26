@@ -3,11 +3,11 @@ var Schema = mongoose.Schema;
 
 var gameSchema=new Schema({
   winner: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: 'Player'
   },
   loser: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: 'Player'
   }
 });

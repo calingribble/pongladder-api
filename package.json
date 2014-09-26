@@ -12,6 +12,7 @@
   "dependencies": {
     "body-parser": "~1.0.0",
     "crypto": "0.0.3",
+    "elo-rank": "^0.2.2",
     "express": "~4.2.0",
     "mongoose": "~3.8.11",
     "mongoose-validator": "^1.0.2"
