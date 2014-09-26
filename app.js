@@ -2,7 +2,6 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var games = require('./routes/games');
 var players = require('./routes/players');
-var passwords = require('./routes/password');
 var mongoose = require('mongoose');
 var validator = require('mongoose-validator');
 
@@ -29,6 +28,5 @@ app.use(allowCrossDomain);
 
 app.use('/api', games);
 app.use('/api', players);
-app.use('/api', passwords);
 
 module.exports = app;
