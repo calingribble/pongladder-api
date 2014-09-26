@@ -33,6 +33,14 @@ var playerSchema = new Schema({
   rating: {
     type: Number,
     default: 1500
+  },
+  pointsFor: {
+    type: Number,
+    default: 0
+  },
+  pointsAgainst: {
+    type: Number,
+    default: 0
   }
 });
 

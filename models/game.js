@@ -9,6 +9,14 @@ var gameSchema=new Schema({
   loser: {
     type: Schema.Types.ObjectId,
     ref: 'Player'
+  },
+  winnerPoints: {
+    type: Number,
+    default: 21
+  },
+  loserPoints: {
+    type: Number,
+    default: 0
   }
 });
 

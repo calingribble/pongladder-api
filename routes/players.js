@@ -3,7 +3,6 @@ var express=require('express');
 
 var router=express.Router();
 
-
 router.route('/players')
 .get(function(req,res){
   Player.find(function(err,players){

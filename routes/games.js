@@ -5,19 +5,6 @@ var express=require('express');
 
 var router=express.Router();
 
-
-//var playerA = 1200;
-//var playerB = 1400;
-
-
-////Gets expected score for first parameter
-//var expectedScoreA = elo.getExpected(winnerdocs.rating,loserdocs.rating);
-//var expectedScoreB = elo.getExpected(loserdocs.rating,winnerdocs.rating);
-
-////update score, 1 if won 0 if lost
-//winnerdocs.rating = elo.updateRating(expectedScoreA,1,winnerdocs.rating);
-//loserdocs.rating = elo.updateRating(expectedScoreB,0,loserdocs.rating);
-
 router.route('/games')
 .get(function(req,res){
   Game.find(function(err,games){
@@ -31,14 +18,18 @@ router.route('/games')
 .post(function(req,res){
   var winnername = req.body.winner[0];
   var losername = req.body.loser[0];
+  var winnerpoints = req.body.winnerPoints;
+  var loserpoints = req.body.loserPoints;
   var game = new Game({});
-  var loser, winner, pointsExchanged;
+  var loser, winner;
   Player.findOne({'name':winnername}, function(err,docswinner) {
     winner = docswinner;
     game.winner = winner;
     Player.findOne({'name':losername}, function(err,docsloser) {
       loser = docsloser;
       game.loser = loser;
+      game.winnerPoints = winnerpoints;
+      game.loserPoints = loserpoints;
       game.save(function(err){
 
       if(docswinner.rating < 2100){
@@ -75,7 +66,11 @@ router.route('/games')
       }
       docsloser.rating = elo.updateRating(expectedScoreLoser,0,docsloser.rating);
         docswinner.wins+=1;
-        docsloser.losses-=1;
+        docsloser.losses+=1;
+        docswinner.pointsFor=Number(docswinner.pointsFor)+Number(winnerpoints);
+        docswinner.pointsAgainst=Number(docswinner.pointsAgainst)+Number(loserpoints);
+        docsloser.pointsFor=Number(docsloser.pointsFor)+Number(loserpoints);
+        docsloser.pointsAgainst=Number(docsloser.pointsAgainst)+Number(winnerpoints);
         if(err) {
           res.send(err);
         }
