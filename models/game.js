@@ -4,11 +4,13 @@ var Schema = mongoose.Schema;
 var gameSchema=new Schema({
   winner: {
     type: Schema.Types.ObjectId,
-    ref: 'Player'
+    ref: 'Player',
+    required: true
   },
   loser: {
     type: Schema.Types.ObjectId,
-    ref: 'Player'
+    ref: 'Player',
+    required: true
   },
   winnerPoints: {
     type: Number,
