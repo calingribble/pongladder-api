@@ -14,11 +14,13 @@ var gameSchema=new Schema({
   },
   winnerPoints: {
     type: Number,
-    default: 21
+    default: 21,
+    required: true
   },
   loserPoints: {
     type: Number,
-    default: 0
+    default: 0,
+    required: true
   }
 });
 
