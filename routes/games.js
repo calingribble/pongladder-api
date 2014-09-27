@@ -16,8 +16,9 @@ router.route('/games')
 })
 
 .post(function(req,res){
-  var winnername = req.body.winner[0] || break;
-  var losername = req.body.loser[0] || break;
+  if(req.body.winner[0] && req.body.loser[0]){
+  var winnername = req.body.winner[0];
+  var losername = req.body.loser[0];
   var winnerpoints = req.body.winnerPoints;
   var loserpoints = req.body.loserPoints;
   var game = new Game({});
@@ -86,6 +87,7 @@ router.route('/games')
       });
     });
   });
+  }
 });
 
 router.route('/games/:id')
