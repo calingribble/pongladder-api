@@ -5,7 +5,7 @@ var Schema = mongoose.Schema;
 var nameValidator = [
   validate({
     validator: 'isLength',
-    arguments: [2, 20],
+    arguments: [2, 40],
     message: 'Name should be between 2 and 20 characters'
   }),
   validate({
