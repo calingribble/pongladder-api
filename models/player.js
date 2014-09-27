@@ -10,7 +10,7 @@ var nameValidator = [
   }),
   validate({
     validator: 'matches',
-    arguments: /^[A-z]+$/,
+    arguments: /^[0-9a-zA-Z \-'_]+$/,
     passIfEmpty: true,
     message: 'Name should contain alphabetic players only'
   })
